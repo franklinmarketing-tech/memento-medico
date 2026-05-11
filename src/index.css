@@ -1,0 +1,205 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 220 25% 97%;
+    --foreground: 222 47% 11%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Brand: Mantecorp blue */
+    --primary: 222 80% 42%;
+    --primary-foreground: 0 0% 100%;
+    --brand-blue: 222 80% 42%;
+    --brand-blue-deep: 224 76% 28%;
+    --brand-blue-soft: 222 70% 96%;
+
+    /* Brand: Mantecorp orange */
+    --accent: 22 95% 54%;
+    --accent-foreground: 0 0% 100%;
+    --brand-orange: 22 95% 54%;
+    --brand-orange-soft: 28 100% 96%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 222 80% 42%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 222 80% 42%;
+
+    --header-from: 222 80% 42%;
+    --header-to: 224 76% 28%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --surface: 222 47% 9%;
+    --surface-elevated: 222 40% 12%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 222 80% 60%;
+    --primary-foreground: 0 0% 100%;
+    --brand-blue: 222 80% 60%;
+    --brand-blue-deep: 224 76% 38%;
+    --brand-blue-soft: 222 40% 16%;
+    --accent: 22 95% 58%;
+    --accent-foreground: 0 0% 100%;
+    --brand-orange: 22 95% 58%;
+    --brand-orange-soft: 22 40% 16%;
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 210 40% 98%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 100%;
+    --success: 160 84% 45%;
+    --success-foreground: 0 0% 100%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 222 80% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 222 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 222 80% 60%;
+    --header-from: 222 80% 28%;
+    --header-to: 224 76% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-card;
+  }
+
+  .header-gradient {
+    background: linear-gradient(135deg, hsl(var(--header-from)) 0%, hsl(var(--header-to)) 100%);
+  }
+
+  .header-glow {
+    box-shadow: 0 4px 24px -6px hsl(var(--primary) / 0.35);
+  }
+
+  .surface-card {
+    @apply bg-card border border-border/60 rounded-2xl shadow-card;
+  }
+
+  /* Card flutuante: profundidade rica em camadas + halo sutil */
+  .card-floating {
+    box-shadow:
+      0 1px 1px hsl(222 47% 11% / 0.04),
+      0 2px 4px hsl(222 47% 11% / 0.06),
+      0 8px 16px -4px hsl(222 47% 11% / 0.10),
+      0 18px 36px -10px hsl(222 47% 11% / 0.18),
+      0 30px 60px -20px hsl(var(--brand-blue) / 0.18);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .card-floating:hover {
+    box-shadow:
+      0 2px 2px hsl(222 47% 11% / 0.05),
+      0 6px 10px hsl(222 47% 11% / 0.08),
+      0 16px 28px -6px hsl(222 47% 11% / 0.14),
+      0 30px 50px -14px hsl(222 47% 11% / 0.22),
+      0 44px 80px -24px hsl(var(--brand-blue) / 0.28);
+  }
+
+  /* Variante para o card destaque (Top Prescritores - gradiente azul) */
+  .card-floating-primary {
+    box-shadow:
+      0 1px 1px hsl(var(--brand-blue-deep) / 0.12),
+      0 2px 4px hsl(var(--brand-blue-deep) / 0.16),
+      0 10px 20px -4px hsl(var(--brand-blue-deep) / 0.28),
+      0 22px 44px -10px hsl(var(--brand-blue) / 0.35),
+      0 36px 70px -20px hsl(var(--accent) / 0.22);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .card-floating-primary:hover {
+    box-shadow:
+      0 2px 2px hsl(var(--brand-blue-deep) / 0.16),
+      0 8px 14px hsl(var(--brand-blue-deep) / 0.22),
+      0 18px 32px -6px hsl(var(--brand-blue-deep) / 0.34),
+      0 32px 56px -14px hsl(var(--brand-blue) / 0.42),
+      0 52px 90px -24px hsl(var(--accent) / 0.32);
+  }
+
+  /* Esconde barra de rolagem mantendo a funcionalidade */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fade lateral para indicar scroll horizontal em tabelas */
+  .scroll-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+            mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+  }
+
+  /* Foco acessível padronizado em chips e botões customizados */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
